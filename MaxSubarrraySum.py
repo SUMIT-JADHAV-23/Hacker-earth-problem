@@ -179,4 +179,38 @@ if __name__ == '__main__':
 
 
 
+#100 % accepted
+
+def max_sum(ans, z):
+    ans_set = set()
+
+    for k in range(z):
+        res = ans[k]
+        max_ending = ans[k]
+
+        if z == 1:
+            ans_set.add(res)
+            return ans_set
+
+        for i in range(k + 1, z):
+            max_ending = max(max_ending + ans[i], ans[i])
+            res = max(max_ending, res)
+            ans_set.add(res)
+
+    for m in range(z):
+        ans_set.add(ans[m])
+
+    return ans_set
+
+
+if __name__ == '__main__':
+    a = int(input())
+    ans = list(map(int, input().split()))
+
+    ans1 = max_sum(ans, len(ans))
+    v = sum(ans1)
+
+    print(v)
+
+
 
